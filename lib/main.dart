@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -5,66 +6,61 @@ void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  static const String _title = 'Flutter Code Sample';
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(),
-        body: ListView(
-          children: [
-            UserField(),
-            UserField(),
-            UserField(),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigation(),
-      )
+    return const CupertinoApp(
+      title: _title,
+      home: MyStatefulWidget(),
     );
   }
 }
 
-class UserField extends StatelessWidget {
-  const UserField({Key? key}) : super(key: key);
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int idx = 0;
+  
+  @override
   Widget build(BuildContext context) {
-    return TextButton(
-      // padding: EdgeInsets.all(10),
-      onPressed: () { print("Hello"); },
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Image.asset('assets/background.png', width: 50),
+    return Scaffold(
+      appBar: CupertinoNavigationBar(
+        middle: Text('쿠퍼티노 디자인'),
+      ),
+      body: Center(
+        child: Text(
+          'Hello Tap #$idx',
+          style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
+        ),
+      ),
+      bottomNavigationBar: CupertinoTabBar(
+        currentIndex: idx,
+        onTap: (i) {
+          setState(() {
+            idx = i;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.home),
+            label: 'Home'
           ),
-          SizedBox(
-            width: 20
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.search),
+            label: 'Search'
           ),
-          Text('홍길동', style: TextStyle(
-            fontSize: 18,
-            color: Colors.black
-          ),)
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.profile_circled),
+            label: 'Profile'
+          ),
         ],
       ),
-    );
-  }
-}
-
-class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      child: BottomNavigationBar(
-      showUnselectedLabels: false,
-      showSelectedLabels: false,
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.phone), label:'phone'),
-        BottomNavigationBarItem(icon: Icon(Icons.message), label:'message'),
-        BottomNavigationBarItem(icon: Icon(Icons.contact_page), label:'document'),
-      ],
-    ),
     );
   }
 }
