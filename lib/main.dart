@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
+    return const GetCupertinoApp(
       theme: CupertinoThemeData(brightness: Brightness.light),
       title: _title,
       home: MyStatefulWidget(),
@@ -32,13 +33,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CupertinoNavigationBar(
-        middle: Text('쿠퍼티노 디자인'),
+        middle: Text('Cupertino Design'),
       ),
-      body: Center(
-        child: Text(
-          'Hello Tap #$idx',
-          style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
-        ),
+      body: Column(
+        children: [
+          Center(
+            child: Text(
+              'Hello Tap #$idx',
+              style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
+            ),
+          ),
+          CupertinoButton(onPressed: () {Get.to(ABC());}, child: Text('getx test'))
+        ]
       ),
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: idx,
@@ -61,6 +67,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Profile'
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ABC extends StatelessWidget {
+  const ABC({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CupertinoNavigationBar(
+        middle: Text('Getx App Bar'),
       ),
     );
   }
