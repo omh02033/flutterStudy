@@ -9,7 +9,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          leading: Icon(Icons.menu, color: Colors.black),
+          title: Text('내 앱', style: TextStyle(
+            color: Colors.black,
+          ),),
+          actions: [
+            TextButton(
+              onPressed: (){print('clicked');},
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.asset('assets/background.png', width: 30),
+                  ),
+                  SizedBox(width: 10),
+                  Text('오명훈')
+                ],
+              )
+            ),
+          ],
+          backgroundColor: Colors.white,
+        ),
         body: Container(
           height: 150,
           padding: EdgeInsets.all(10),
@@ -46,6 +67,15 @@ class MyApp extends StatelessWidget {
               )
             ],
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Color(0xffE83C77),
+          unselectedItemColor: Color(0xffcccccc),
+          items: [
+            BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
+            BottomNavigationBarItem(label: 'Search', icon: Icon(Icons.search)),
+            BottomNavigationBarItem(label: 'Profile', icon: Icon(Icons.account_circle_outlined)),
+          ],
         ),
       ),
     );
