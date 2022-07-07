@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterstudy/src/controller/count_controller_with_getx.dart';
-import 'package:flutterstudy/src/pages/simple_state_manage_page.dart';
+import 'package:flutterstudy/src/pages/reactive_state_manage_page.dart';
 import 'package:get/get.dart';
+
+import 'pages/simple_state_manage_page.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -49,6 +51,12 @@ class Home extends StatelessWidget {
               child: Text('단순상태관리'),
               onPressed: (){
                 Get.to(SimpleStateManagePage());
+              }
+            ),
+            CupertinoButton(
+              child: Text('반응형상태관리'),
+              onPressed: (){
+                Get.to(ReactiveStateManagePage());
               }
             ),
           ],
