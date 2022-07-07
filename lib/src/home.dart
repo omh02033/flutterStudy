@@ -16,9 +16,23 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CupertinoButton(
-              child: Text('일반적인 라우트'),
+              child: Text('네임드 라우트'),
               onPressed: (){
                 Get.toNamed('/first');
+              }
+            ),
+            CupertinoButton(
+              child: Text('Arguments 전달'),
+              onPressed: (){
+                Get.toNamed('/next', arguments: User(
+                  name: 'omh', age: 18
+                ));
+              }
+            ),
+            CupertinoButton(
+              child: Text('동적 url'),
+              onPressed: (){
+                Get.toNamed('/user/23452?name=omh&age=18');
               }
             ),
           ],
@@ -26,4 +40,10 @@ class Home extends StatelessWidget {
       ),
     );
   }
+}
+
+class User{
+  String name;
+  int age;
+  User({required this.name, required this.age});
 }

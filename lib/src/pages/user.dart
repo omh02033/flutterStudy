@@ -1,26 +1,29 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class FirstNamedPage extends StatelessWidget {
-  const FirstNamedPage({Key? key}) : super(key: key);
+class UserPage extends StatelessWidget {
+  const UserPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CupertinoNavigationBar(
-        middle: Text('First Named Page'),
+        middle: Text('Next Page'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(Get.parameters['uid'] as String),
+            Text(Get.parameters['name'] as String),
+            Text(Get.parameters['age'] as String),
             CupertinoButton(
-              child: Text('다음페이지 이동'),
+              child: Text('뒤로 이동'),
               onPressed: () {
-                Get.offNamed('/second');
+                Get.back();
               }
-            )
+            ),
           ],
         ),
       )

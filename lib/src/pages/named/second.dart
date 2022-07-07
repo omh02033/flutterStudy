@@ -24,7 +24,7 @@ class SecondNamedPage extends StatelessWidget {
             CupertinoButton(
               child: Text('홈으로 이동'),
               onPressed: () {
-                Get.offAndToNamed('/');
+                Get.offAllNamed('/');
               }
             ),
           ],
