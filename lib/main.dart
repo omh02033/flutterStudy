@@ -7,6 +7,8 @@ import 'package:flutterstudy/src/pages/named/second.dart';
 import 'package:flutterstudy/src/pages/next.dart';
 import 'package:flutterstudy/src/pages/user.dart';
 
+import 'package:flutterstudy/src/controller/count_controller_with_getx.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CountControllerWithGetx());
     return GetCupertinoApp(
       theme: CupertinoThemeData(brightness: Brightness.light),
       title: 'Flutter Demo',
