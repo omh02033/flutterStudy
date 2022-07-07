@@ -2,28 +2,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class FirstNamedPage extends StatelessWidget {
+  const FirstNamedPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CupertinoNavigationBar(
-        middle: Text('라우트 관리 홈'),
+        middle: Text('First Named Page'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CupertinoButton(
-              child: Text('일반적인 라우트'),
-              onPressed: (){
-                Get.toNamed('/first');
+              child: Text('다음페이지 이동'),
+              onPressed: () {
+                Get.toNamed('/second');
               }
-            ),
+            )
           ],
         ),
-      ),
+      )
     );
   }
 }
