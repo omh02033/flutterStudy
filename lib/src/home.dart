@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterstudy/src/controller/count_controller_with_getx.dart';
 import 'package:flutterstudy/src/pages/reactive_state_manage_page.dart';
 import 'package:get/get.dart';
 
@@ -19,14 +18,6 @@ class Home extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            GetBuilder<CountControllerWithGetx>(
-              builder: (controller) {
-                return Text(
-                  "${controller.count}",
-                  style: CupertinoTheme.of(context).textTheme.navTitleTextStyle,
-                );
-              },
-            ),
             CupertinoButton(
               child: Text('네임드 라우트'),
               onPressed: (){
@@ -57,6 +48,12 @@ class Home extends StatelessWidget {
               child: Text('반응형상태관리'),
               onPressed: (){
                 Get.to(ReactiveStateManagePage());
+              }
+            ),
+            CupertinoButton(
+              child: Text('바인딩 관리'),
+              onPressed: (){
+                Get.toNamed('/binding');
               }
             ),
           ],

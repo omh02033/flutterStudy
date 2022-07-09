@@ -7,6 +7,7 @@ class WithGetX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CountControllerWithGetx());
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

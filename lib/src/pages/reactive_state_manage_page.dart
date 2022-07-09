@@ -21,12 +21,11 @@ class ReactiveStateManagePage extends StatelessWidget {
               "Getx",
               style: CupertinoTheme.of(context).textTheme.navTitleTextStyle
             ),
-            Obx(() {
-              return Text(
+            Obx(() => Text(
                 "${Get.find<CountControllerWithReactive>().count.value}",
                 style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle
-              );
-            }),
+              )
+            ),
             CupertinoButton(
               child: Text("+", style: TextStyle(fontSize: 30)),
               onPressed: () {
